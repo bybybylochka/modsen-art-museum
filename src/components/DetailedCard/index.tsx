@@ -19,7 +19,6 @@ import {
 } from './styled';
 import { Wrapper } from '../../global';
 import Art from '../../assets/testImage.png';
-import { PaginationItemSaveButton } from '../PaginationItem/styled';
 import SaveImage from '../../assets/bookmark.png';
 
 const DetailedCard = () => {

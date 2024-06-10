@@ -1,14 +1,14 @@
 import React from 'react';
-import { OtherWorksContainer, OtherWorksLayout } from './styled';
+import { OtherWorksContainer } from './styled';
 import HighlightCard from '../HighlightCard';
-import { Subtitle, Title } from '../Global/styled';
+import { ArtsLayout, Subtitle, Title } from '../Global/styled';
 
 const OtherWorks = () => {
     return (
         <OtherWorksContainer>
             <Subtitle>Here some more</Subtitle>
             <Title>Other works for you</Title>
-            <OtherWorksLayout>
+            <ArtsLayout>
                 <HighlightCard />
                 <HighlightCard />
                 <HighlightCard />
@@ -17,7 +17,7 @@ const OtherWorks = () => {
                 <HighlightCard />
                 <HighlightCard />
                 <HighlightCard />
-            </OtherWorksLayout>
+            </ArtsLayout>
         </OtherWorksContainer>
     );
 };
