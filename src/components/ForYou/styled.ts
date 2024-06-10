@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 import { globalColors } from '../../constants/colors';
 
-export const ForYouPicturesContainer = styled.div`
+export const ForYouContainer = styled.div`
     padding-bottom: 60px;
-`;
-export const ForYouTitle = styled.p`
-    font-size: 32px;
-    text-align: center;
 `;
 
 export const Pagination = styled.div`

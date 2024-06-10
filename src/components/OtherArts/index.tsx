@@ -1,11 +1,11 @@
 import React from 'react';
-import { OtherWorksContainer } from './styled';
+import { OtherArtsContainer } from './styled';
 import HighlightCard from '../HighlightCard';
 import { ArtsLayout, Subtitle, Title } from '../Global/styled';
 
-const OtherWorks = () => {
+const OtherArts = () => {
     return (
-        <OtherWorksContainer>
+        <OtherArtsContainer>
             <Subtitle>Here some more</Subtitle>
             <Title>Other works for you</Title>
             <ArtsLayout>
@@ -18,8 +18,8 @@ const OtherWorks = () => {
                 <HighlightCard />
                 <HighlightCard />
             </ArtsLayout>
-        </OtherWorksContainer>
+        </OtherArtsContainer>
     );
 };
 
-export default OtherWorks;
+export default OtherArts;

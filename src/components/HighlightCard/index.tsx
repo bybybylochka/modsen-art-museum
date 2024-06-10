@@ -1,29 +1,27 @@
 import React from 'react';
 import { HighlightCardContainer, HighlightCardImage } from './styled';
 import Art from '../../assets/testImage.png';
-import {
-    InfoContainer,
-    PaginationItemArtist,
-    PaginationItemDate,
-    PaginationItemSaveButton,
-    PaginationItemTitle,
-} from '../PaginationItem/styled';
+import { InfoContainer } from '../PaginationCard/styled';
 import SaveImage from '../../assets/bookmark.png';
+import {
+    HighlightArtist,
+    HighlightDate,
+    HighlightSaveButton,
+    HighlightTitle,
+} from '../Global/styled';
 
 const HighlightCard = () => {
     return (
         <HighlightCardContainer>
             <HighlightCardImage src={Art} alt={'image'} />
             <InfoContainer>
-                <PaginationItemTitle>
-                    Charles V, bust length...
-                </PaginationItemTitle>
-                <PaginationItemArtist>Giovanni Britto</PaginationItemArtist>
-                <PaginationItemDate>1999</PaginationItemDate>
+                <HighlightTitle>Charles V, bust length...</HighlightTitle>
+                <HighlightArtist>Giovanni Britto</HighlightArtist>
+                <HighlightDate>1999</HighlightDate>
             </InfoContainer>
-            <PaginationItemSaveButton>
+            <HighlightSaveButton>
                 <img src={SaveImage} alt={'save'} />
-            </PaginationItemSaveButton>
+            </HighlightSaveButton>
         </HighlightCardContainer>
     );
 };

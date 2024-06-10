@@ -19,3 +19,29 @@ export const ArtsLayout = styled.div`
     gap: 16px;
     padding: 30px 0;
 `;
+
+export const HighlightTitle = styled.p`
+    font-size: 17px;
+    font-weight: 500;
+`;
+
+export const HighlightArtist = styled.p`
+    font-size: 15px;
+    color: ${globalColors.highlightTextColor};
+`;
+
+export const HighlightDate = styled.p`
+    font-size: 15px;
+    font-weight: 600;
+`;
+
+export const HighlightSaveButton = styled.button`
+    border: none;
+    border-radius: 50%;
+    padding: 17px;
+    height: 60px;
+    background-color: ${globalColors.backgroundColor};
+    &:hover {
+        background-color: ${globalColors.backgroundHeaderColor};
+    }
+`;

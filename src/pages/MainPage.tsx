@@ -2,15 +2,15 @@ import React from 'react';
 import Title from '../components/Title';
 import { Wrapper } from '../global';
 import Search from '../components/Search';
-import ForYouPictures from '../components/ForYouPictures';
-import OtherWorks from '../components/OtherWorks';
+import OtherWorks from '../components/OtherArts';
+import ForYou from '../components/ForYou';
 
 const MainPage = () => {
     return (
         <Wrapper>
             <Title />
             <Search />
-            <ForYouPictures />
+            <ForYou />
             <OtherWorks />
         </Wrapper>
     );

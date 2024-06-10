@@ -1,22 +1,22 @@
 import React from 'react';
 import {
-    ForYouPicturesContainer,
+    ForYouContainer,
     Pagination,
     PaginationNav,
     PaginationNavItem,
 } from './styled';
-import PaginationItem from '../PaginationItem';
 import { Subtitle, Title } from '../Global/styled';
+import PaginationCard from '../PaginationCard';
 
-const ForYouPictures = () => {
+const ForYou = () => {
     return (
-        <ForYouPicturesContainer>
+        <ForYouContainer>
             <Subtitle>Topics for you</Subtitle>
             <Title>Our special gallery</Title>
             <Pagination>
-                <PaginationItem></PaginationItem>
-                <PaginationItem></PaginationItem>
-                <PaginationItem></PaginationItem>
+                <PaginationCard></PaginationCard>
+                <PaginationCard></PaginationCard>
+                <PaginationCard></PaginationCard>
             </Pagination>
             <PaginationNav>
                 <PaginationNavItem>1</PaginationNavItem>
@@ -25,8 +25,8 @@ const ForYouPictures = () => {
                 <PaginationNavItem>4</PaginationNavItem>
                 <PaginationNavItem>&gt;</PaginationNavItem>
             </PaginationNav>
-        </ForYouPicturesContainer>
+        </ForYouContainer>
     );
 };
 
-export default ForYouPictures;
+export default ForYou;
