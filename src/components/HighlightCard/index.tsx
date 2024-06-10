@@ -5,7 +5,6 @@ import {
     InfoContainer,
     PaginationItemArtist,
     PaginationItemDate,
-    PaginationItemInfo,
     PaginationItemSaveButton,
     PaginationItemTitle,
 } from '../PaginationItem/styled';
