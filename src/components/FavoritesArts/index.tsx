@@ -4,8 +4,11 @@ import { Wrapper } from '../../global';
 
 import { ArtsLayout } from '../Global/styled';
 import SaveImage from '@assets/bookmarkDark.png';
+import useFavorites from '@utils/useFavorites';
+import HighlightCard from '@components/HighlightCard';
 
 const FavoritesArts = () => {
+    const { favorites } = useFavorites();
     return (
         <FavoritesArtsContainer>
             <Wrapper>
@@ -17,7 +20,11 @@ const FavoritesArts = () => {
                         Favorites
                     </span>
                 </FavoritesTitle>
-                <ArtsLayout></ArtsLayout>
+                <ArtsLayout>
+                    {favorites.map((art) => (
+                        <HighlightCard art={art} key={art.id} />
+                    ))}
+                </ArtsLayout>
             </Wrapper>
         </FavoritesArtsContainer>
     );
