@@ -17,11 +17,12 @@ import useFavorites from '@utils/useFavorites';
 interface HighlightCardProps {
     art: Art;
 }
+
 const HighlightCard: React.FC<HighlightCardProps> = ({ art }) => {
     const navigate = useNavigate();
     const src = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
     const imageLoaded = useImageLoader(src);
-    const { addToFavorites, isFavorites } = useFavorites();
+    const { addToFavorites, isFavorites, removeFromFavorites } = useFavorites();
     const handleAddToFavorites = (art: Art) => {
         addToFavorites(art);
     };
@@ -42,7 +43,9 @@ const HighlightCard: React.FC<HighlightCardProps> = ({ art }) => {
             <HighlightSaveButton
                 onClick={(e) => {
                     e.stopPropagation();
-                    handleAddToFavorites(art);
+                    isFavorites(art)
+                        ? removeFromFavorites(art)
+                        : handleAddToFavorites(art);
                 }}
                 saved={isFavorites(art)}
             >

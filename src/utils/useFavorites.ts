@@ -17,13 +17,17 @@ const useFavorites = () => {
         localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     };
 
+    const removeFromFavorites = (art: Art) => {
+        const updatedFavorites = favorites.filter((item) => item.id !== art.id);
+        setFavorites(updatedFavorites);
+        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    };
+
     const isFavorites = (art: Art) => {
-        console.log(favorites);
-        console.log(art);
         return favorites.some((favorite) => favorite.id === art.id);
     };
 
-    return { favorites, addToFavorites, isFavorites };
+    return { favorites, addToFavorites, isFavorites, removeFromFavorites };
 };
 
 export default useFavorites;
