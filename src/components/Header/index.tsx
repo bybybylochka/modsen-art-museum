@@ -1,30 +1,41 @@
 import React from 'react';
 import {
     ButtonsContainer,
-    HeaderButton,
     HeaderContainer,
+    HeaderLink,
     HeaderWrapper,
 } from './styled';
 import { Wrapper } from '../../global';
 import Logo from '../Logo';
-import HomeImage from '../../assets/home.png';
-import BookmarkImage from '../../assets/bookmark.png';
+import HomeImage from '@assets/home.png';
+import BookmarkImage from '@assets/bookmark.png';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
+    const location = useLocation();
     return (
         <HeaderContainer>
             <Wrapper>
                 <HeaderWrapper>
                     <Logo />
                     <ButtonsContainer>
-                        <HeaderButton>
-                            <img src={HomeImage} alt={'home'} />
-                            Home
-                        </HeaderButton>
-                        <HeaderButton>
-                            <img src={BookmarkImage} alt={'bookmark'} />
-                            Your favourites
-                        </HeaderButton>
+                        {location.pathname === '/' ? (
+                            <HeaderLink to={'/favorites'}>
+                                <img src={BookmarkImage} alt={'bookmark'} />
+                                Your favourites
+                            </HeaderLink>
+                        ) : (
+                            <>
+                                <HeaderLink to={'/'}>
+                                    <img src={HomeImage} alt={'home'} />
+                                    Home
+                                </HeaderLink>
+                                <HeaderLink to={'/favorites'}>
+                                    <img src={BookmarkImage} alt={'bookmark'} />
+                                    Your favourites
+                                </HeaderLink>
+                            </>
+                        )}
                     </ButtonsContainer>
                 </HeaderWrapper>
             </Wrapper>

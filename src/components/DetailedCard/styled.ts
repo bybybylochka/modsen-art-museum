@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { globalColors } from '../../constants/colors';
+import { globalColors } from '@constants/colors';
 
 export const DetailedCardContainer = styled.div`
     padding: 80px 0;

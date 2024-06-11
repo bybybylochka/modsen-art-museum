@@ -3,7 +3,7 @@ import { FavoritesArtsContainer, FavoritesTitle } from './styled';
 import { Wrapper } from '../../global';
 import HighlightCard from '../HighlightCard';
 import { ArtsLayout } from '../Global/styled';
-import SaveImage from '../../assets/bookmarkDark.png';
+import SaveImage from '@assets/bookmarkDark.png';
 
 const FavoritesArts = () => {
     return (

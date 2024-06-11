@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { globalColors } from '../../constants/colors';
+import { globalColors } from '@constants/colors';
+import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
     background: linear-gradient(
@@ -17,17 +18,18 @@ export const HeaderWrapper = styled.div`
     justify-content: space-between;
 `;
 
-export const ButtonsContainer = styled.div`
+export const ButtonsContainer = styled.nav`
     display: flex;
     gap: 20px;
     align-items: center;
 `;
 
-export const HeaderButton = styled.button`
+export const HeaderLink = styled(Link)`
     display: flex;
     align-items: center;
     gap: 10px;
     border: none;
     background-color: transparent;
     color: ${globalColors.textLightColor};
+    text-decoration: none;
 `;

@@ -2,8 +2,8 @@ import React from 'react';
 import { FooterContainer, FooterWrapper } from './styled';
 import { Wrapper } from '../../global';
 import Logo from '../Logo';
-import LogoModsenImage from '../../assets/logo-modsen.png';
-import { globalColors } from '../../constants/colors';
+import LogoModsenImage from '@assets/logo-modsen.png';
+import { globalColors } from '@constants/colors';
 
 const Footer = () => {
     return (
