@@ -9,20 +9,24 @@ import {
     HighlightSaveButton,
     HighlightTitle,
 } from '../Global/styled';
+import { Link } from 'react-router-dom';
 
 const HighlightCard = () => {
+    const cardId = '123';
     return (
-        <HighlightCardContainer>
-            <HighlightCardImage src={Art} alt={'image'} />
-            <InfoContainer>
-                <HighlightTitle>Charles V, bust length...</HighlightTitle>
-                <HighlightArtist>Giovanni Britto</HighlightArtist>
-                <HighlightDate>1999</HighlightDate>
-            </InfoContainer>
-            <HighlightSaveButton>
-                <img src={SaveImage} alt={'save'} />
-            </HighlightSaveButton>
-        </HighlightCardContainer>
+        <Link to={`/detailed-info/${cardId}`}>
+            <HighlightCardContainer id={cardId}>
+                <HighlightCardImage src={Art} alt={'image'} />
+                <InfoContainer>
+                    <HighlightTitle>Charles V, bust length...</HighlightTitle>
+                    <HighlightArtist>Giovanni Britto</HighlightArtist>
+                    <HighlightDate>1999</HighlightDate>
+                </InfoContainer>
+                <HighlightSaveButton>
+                    <img src={SaveImage} alt={'save'} />
+                </HighlightSaveButton>
+            </HighlightCardContainer>
+        </Link>
     );
 };
 
