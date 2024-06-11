@@ -1,6 +1,6 @@
 import React from 'react';
 import { LogoContainer, LogoImage, LogoText } from './styled';
-import logoImage from '../../assets/logo.png';
+import logoImage from '@assets/logo.png';
 
 interface LogoProps {
     color?: string;

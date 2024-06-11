@@ -7,8 +7,8 @@ import {
 } from './styled';
 import { Wrapper } from '../../global';
 import Logo from '../Logo';
-import HomeImage from '../../assets/home.png';
-import BookmarkImage from '../../assets/bookmark.png';
+import HomeImage from '@assets/home.png';
+import BookmarkImage from '@assets/bookmark.png';
 import { useLocation } from 'react-router-dom';
 
 const Header = () => {

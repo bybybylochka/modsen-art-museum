@@ -1,8 +1,8 @@
 import React from 'react';
 import { HighlightCardContainer, HighlightCardImage } from './styled';
-import Art from '../../assets/testImage.png';
+import Art from '@assets/testImage.png';
 import { InfoContainer } from '../PaginationCard/styled';
-import SaveImage from '../../assets/bookmark.png';
+import SaveImage from '@assets/bookmark.png';
 import {
     HighlightArtist,
     HighlightDate,

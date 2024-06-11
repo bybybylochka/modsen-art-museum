@@ -5,8 +5,8 @@ import {
     PaginationCardImage,
     PaginationCardInfo,
 } from './styled';
-import Art from '../../assets/testImage.png';
-import SaveImage from '../../assets/bookmark.png';
+import Art from '@assets/testImage.png';
+import SaveImage from '@assets/bookmark.png';
 import {
     HighlightArtist,
     HighlightDate,

@@ -6,7 +6,7 @@ import {
     SearchInput,
     SortLabel,
 } from './styled';
-import SearchImage from '../../assets/search.png';
+import SearchImage from '@assets/search.png';
 
 const Search = () => {
     return (

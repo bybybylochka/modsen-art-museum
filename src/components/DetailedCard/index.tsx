@@ -18,8 +18,8 @@ import {
     SaveButton,
 } from './styled';
 import { Wrapper } from '../../global';
-import Art from '../../assets/testImage.png';
-import SaveImage from '../../assets/bookmark.png';
+import Art from '@assets/testImage.png';
+import SaveImage from '@assets/bookmark.png';
 
 const DetailedCard = () => {
     return (
