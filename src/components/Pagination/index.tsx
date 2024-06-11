@@ -39,7 +39,9 @@ const Pagination = (props: PaginationProps) => {
             </PaginationNavItem>
             {nav && (
                 <>
-                    <PaginationNavItem current>{nav.current}</PaginationNavItem>
+                    <PaginationNavItem current={'true'}>
+                        {nav.current}
+                    </PaginationNavItem>
                     {nav.current < nav.total && (
                         <PaginationNavItem
                             onClick={() => onPageClick(nav.current + 1)}

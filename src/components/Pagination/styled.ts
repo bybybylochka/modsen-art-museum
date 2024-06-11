@@ -8,7 +8,7 @@ export const PaginationNav = styled.div`
 `;
 interface PaginationNavItemProps {
     onClick?: () => void;
-    current?: boolean;
+    current?: string;
 }
 export const PaginationNavItem = styled.button<PaginationNavItemProps>`
     padding: 4px 10px;

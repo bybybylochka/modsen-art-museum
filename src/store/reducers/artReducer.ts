@@ -45,7 +45,6 @@ export const loadRandomArts = (): AppThunk => async (dispatch) => {
     let page = Math.floor(Math.random() * 1000) + 1;
     try {
         const arts = await api.loadRandomArts(page);
-        console.log(arts);
         dispatch(loadRandomArtsAction(arts.data));
     } catch (error) {
         // обработка ошибки

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/index';
 import { loadPaginationPage } from '@store/reducers/artReducer';
 import Pagination from '@components/Pagination';
+import Search from '@components/Search';
 
 const ROWS_PER_PAGE = 3;
 
@@ -16,11 +17,13 @@ const ForYou = () => {
     const arts = useSelector((state: RootState) => state.art.paginationArts);
     const totalPages = useSelector((state: RootState) => state.art.totalPages);
     const [page, setPage] = useState(1);
+    const [doSort, setDoSort] = useState(false);
+    const [query, setQuery] = useState('');
 
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        dispatch(loadPaginationPage(page, false, ''));
-    }, [page]);
+        dispatch(loadPaginationPage(page, doSort, query));
+    }, [dispatch, page, doSort, query]);
 
     const handleNextPageClick = useCallback(() => {
         const current = page;
@@ -40,36 +43,46 @@ const ForYou = () => {
     const handlePageClick = useCallback((page: number) => {
         setPage(page);
     }, []);
+
+    const handleSubmit = (query: string, doSort: boolean) => {
+        setPage(1);
+        setDoSort(doSort);
+        setQuery(query);
+    };
+
     return (
-        <ForYouContainer>
-            <Subtitle>Topics for you</Subtitle>
-            <Title>Our special gallery</Title>
-            <PaginationCardContainer>
-                {arts
-                    ? arts.map((art, index) => (
-                          <PaginationCard
-                              key={index}
-                              art={art}
-                          ></PaginationCard>
-                      ))
-                    : 'no data'}
-            </PaginationCardContainer>
-            {arts && (
-                <Pagination
-                    onNextPageClick={handleNextPageClick}
-                    onPrevPageClick={handlePrevPageClick}
-                    onPageClick={handlePageClick}
-                    disable={{
-                        left: page === 1,
-                        right: page === getTotalPageCount(totalPages),
-                    }}
-                    nav={{
-                        current: page,
-                        total: getTotalPageCount(totalPages),
-                    }}
-                />
-            )}
-        </ForYouContainer>
+        <>
+            <Search onSubmit={handleSubmit} />
+            <ForYouContainer>
+                <Subtitle>Topics for you</Subtitle>
+                <Title>Our special gallery</Title>
+                <PaginationCardContainer>
+                    {arts
+                        ? arts.map((art, index) => (
+                              <PaginationCard
+                                  key={index}
+                                  art={art}
+                              ></PaginationCard>
+                          ))
+                        : 'no data'}
+                </PaginationCardContainer>
+                {arts && (
+                    <Pagination
+                        onNextPageClick={handleNextPageClick}
+                        onPrevPageClick={handlePrevPageClick}
+                        onPageClick={handlePageClick}
+                        disable={{
+                            left: page === 1,
+                            right: page === getTotalPageCount(totalPages),
+                        }}
+                        nav={{
+                            current: page,
+                            total: getTotalPageCount(totalPages),
+                        }}
+                    />
+                )}
+            </ForYouContainer>
+        </>
     );
 };
 
