@@ -1,7 +1,7 @@
 import React from 'react';
 import { FavoritesArtsContainer, FavoritesTitle } from './styled';
 import { Wrapper } from '../../global';
-import HighlightCard from '../HighlightCard';
+
 import { ArtsLayout } from '../Global/styled';
 import SaveImage from '@assets/bookmarkDark.png';
 
@@ -17,16 +17,7 @@ const FavoritesArts = () => {
                         Favorites
                     </span>
                 </FavoritesTitle>
-                <ArtsLayout>
-                    <HighlightCard />
-                    <HighlightCard />
-                    <HighlightCard />
-                    <HighlightCard />
-                    <HighlightCard />
-                    <HighlightCard />
-                    <HighlightCard />
-                    <HighlightCard />
-                </ArtsLayout>
+                <ArtsLayout></ArtsLayout>
             </Wrapper>
         </FavoritesArtsContainer>
     );
