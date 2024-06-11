@@ -12,6 +12,8 @@ export const PaginationCardContainer = styled.div`
 
 export const PaginationCardImage = styled.img`
     width: 424px;
+    height: 444px;
+    object-fit: cover;
 `;
 
 export const PaginationCardInfo = styled.div`

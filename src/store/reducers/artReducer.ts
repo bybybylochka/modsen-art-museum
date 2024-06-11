@@ -1,6 +1,8 @@
 import {
     ArtActionTypes,
+    LOAD_PAGINATION_ARTS,
     LOAD_RANDOM_ARTS,
+    loadPaginationArtsAction,
     loadRandomArtsAction,
 } from '@store/actions/artActions';
 import { Art } from '@utils/art';
@@ -10,11 +12,15 @@ import { AppThunk } from '@store/index';
 export type ArtState = {
     searchResults: Art[];
     randomArts: Art[];
+    paginationArts: Art[];
+    totalPages: number;
 };
 
 const initialState: ArtState = {
     searchResults: [],
     randomArts: [],
+    paginationArts: [],
+    totalPages: 0,
 };
 
 export default function artReducer(
@@ -24,6 +30,12 @@ export default function artReducer(
     switch (action.type) {
         case LOAD_RANDOM_ARTS:
             return { ...state, randomArts: action.payload };
+        case LOAD_PAGINATION_ARTS:
+            return {
+                ...state,
+                paginationArts: action.payload.arts,
+                totalPages: action.payload.totalPages,
+            };
         default:
             return state;
     }
@@ -39,3 +51,19 @@ export const loadRandomArts = (): AppThunk => async (dispatch) => {
         // обработка ошибки
     }
 };
+
+export const loadPaginationPage =
+    (page: number, doSort: boolean, query: string): AppThunk =>
+    async (dispatch) => {
+        try {
+            const arts = await api.loadPaginationArts(page, doSort, query);
+            dispatch(
+                loadPaginationArtsAction(
+                    arts.data,
+                    arts.pagination.total_pages,
+                ),
+            );
+        } catch (err) {
+            // обработка ошибки
+        }
+    };
