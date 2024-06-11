@@ -1,8 +1,10 @@
 import { Art } from '@utils/art';
 import { Action } from 'redux';
+import { DetailedArt } from '@utils/detailedArt';
 export const LOAD_RANDOM_ARTS = 'LOAD_RANDOM_ARTS';
 
 export const LOAD_PAGINATION_ARTS = 'LOAD_PAGINATION_ARTS';
+export const LOAD_DETAILED_INFO = 'LOAD_DETAILED_INFO';
 
 export interface LoadRandomArtsAction extends Action {
     type: 'LOAD_RANDOM_ARTS';
@@ -25,4 +27,18 @@ export const loadPaginationArtsAction = (
     payload: { arts, totalPages },
 });
 
-export type ArtActionTypes = LoadRandomArtsAction | LoadPaginationArtsAction;
+export interface LoadDetailedInfoAction extends Action {
+    type: 'LOAD_DETAILED_INFO';
+    payload: DetailedArt;
+}
+export const loadDetailedInfoAction = (
+    art: DetailedArt,
+): LoadDetailedInfoAction => ({
+    type: LOAD_DETAILED_INFO,
+    payload: art,
+});
+
+export type ArtActionTypes =
+    | LoadRandomArtsAction
+    | LoadPaginationArtsAction
+    | LoadDetailedInfoAction;

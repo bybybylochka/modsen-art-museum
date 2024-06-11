@@ -23,4 +23,12 @@ export const api = {
             .then((response) => response.data)
             .catch(() => console.log('Ошибка загрузки пагинации art'));
     },
+    loadDetailedInfo(id?: string) {
+        return instanceArt
+            .get(
+                `/artworks/${id}?fields=id,title,artist_display,date_display,image_id,place_of_origin,dimensions,credit_line,gallery_title`,
+            )
+            .then((response) => response.data)
+            .catch(() => console.log('Ошибка загрузки детальной информации'));
+    },
 };

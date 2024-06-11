@@ -12,6 +12,7 @@ export const DetailedCardWrapper = styled.div`
 export const CardImage = styled.img`
     position: relative;
     display: inline-block;
+    width: 497px;
 `;
 export const ImageContainer = styled.div`
     position: relative;

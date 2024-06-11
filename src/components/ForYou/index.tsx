@@ -31,7 +31,7 @@ const ForYou = () => {
         const total = arts ? getTotalPageCount(totalPages) : current;
 
         setPage(next <= total ? next : current);
-    }, [page, arts]);
+    }, [page, arts, totalPages]);
 
     const handlePrevPageClick = useCallback(() => {
         const current = page;

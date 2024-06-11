@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
     InfoContainer,
     PaginationCardContainer,
@@ -15,20 +15,15 @@ import {
 import { Link } from 'react-router-dom';
 import { Art } from '@utils/art';
 import defaultImage from '@assets/logo.png';
+import useImageLoader from '@utils/useImageLoader';
 
 interface PaginationCardProps {
     art: Art;
 }
 
 const PaginationCard: React.FC<PaginationCardProps> = ({ art }) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-    let src = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
-    useEffect(() => {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => setImageLoaded(true);
-        img.onerror = () => setImageLoaded(false);
-    }, [src]);
+    const src = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
+    const imageLoaded = useImageLoader(src);
     return (
         <Link to={`/detailed-info/${art.id}`}>
             <PaginationCardContainer id={art.id}>

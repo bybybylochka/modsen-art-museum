@@ -1,19 +1,23 @@
 import {
     ArtActionTypes,
+    LOAD_DETAILED_INFO,
     LOAD_PAGINATION_ARTS,
     LOAD_RANDOM_ARTS,
+    loadDetailedInfoAction,
     loadPaginationArtsAction,
     loadRandomArtsAction,
 } from '@store/actions/artActions';
 import { Art } from '@utils/art';
 import { api } from '../../api';
 import { AppThunk } from '@store/index';
+import { DetailedArt } from '@utils/detailedArt';
 
 export type ArtState = {
     searchResults: Art[];
     randomArts: Art[];
     paginationArts: Art[];
     totalPages: number;
+    detailedInfo: DetailedArt;
 };
 
 const initialState: ArtState = {
@@ -21,6 +25,17 @@ const initialState: ArtState = {
     randomArts: [],
     paginationArts: [],
     totalPages: 0,
+    detailedInfo: {
+        id: '',
+        title: '',
+        artist_display: '',
+        date_display: '',
+        image_id: '',
+        place_of_origin: '',
+        dimensions: '',
+        credit_line: '',
+        gallery_title: '',
+    },
 };
 
 export default function artReducer(
@@ -35,6 +50,11 @@ export default function artReducer(
                 ...state,
                 paginationArts: action.payload.arts,
                 totalPages: action.payload.totalPages,
+            };
+        case LOAD_DETAILED_INFO:
+            return {
+                ...state,
+                detailedInfo: action.payload,
             };
         default:
             return state;
@@ -62,6 +82,17 @@ export const loadPaginationPage =
                     arts.pagination.total_pages,
                 ),
             );
+        } catch (err) {
+            // обработка ошибки
+        }
+    };
+
+export const loadDetailedInfo =
+    (id?: string): AppThunk =>
+    async (dispatch) => {
+        try {
+            const art = await api.loadDetailedInfo(id);
+            dispatch(loadDetailedInfoAction(art.data));
         } catch (err) {
             // обработка ошибки
         }
