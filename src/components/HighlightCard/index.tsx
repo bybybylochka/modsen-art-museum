@@ -1,6 +1,5 @@
 import React from 'react';
 import { HighlightCardContainer, HighlightCardImage } from './styled';
-import Art from '@assets/testImage.png';
 import { InfoContainer } from '../PaginationCard/styled';
 import SaveImage from '@assets/bookmark.png';
 import {
@@ -10,17 +9,28 @@ import {
     HighlightTitle,
 } from '../Global/styled';
 import { Link } from 'react-router-dom';
+import { Art } from '@utils/art';
+import defaultImage from '@assets/logo.png';
+import useImageLoader from '@utils/useImageLoader';
 
-const HighlightCard = () => {
-    const cardId = '123';
+interface HighlightCardProps {
+    art: Art;
+}
+const HighlightCard: React.FC<HighlightCardProps> = ({ art }) => {
+    const src = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
+    const imageLoaded = useImageLoader(src);
+
     return (
-        <Link to={`/detailed-info/${cardId}`}>
-            <HighlightCardContainer id={cardId}>
-                <HighlightCardImage src={Art} alt={'image'} />
+        <Link to={`/detailed-info/${art.id}`}>
+            <HighlightCardContainer id={art.id}>
+                <HighlightCardImage
+                    src={imageLoaded ? src : defaultImage}
+                    alt={art.title}
+                />
                 <InfoContainer>
-                    <HighlightTitle>Charles V, bust length...</HighlightTitle>
-                    <HighlightArtist>Giovanni Britto</HighlightArtist>
-                    <HighlightDate>1999</HighlightDate>
+                    <HighlightTitle>{art.title}</HighlightTitle>
+                    <HighlightArtist>{art.artist_display}</HighlightArtist>
+                    <HighlightDate>{art.date_display}</HighlightDate>
                 </InfoContainer>
                 <HighlightSaveButton>
                     <img src={SaveImage} alt={'save'} />

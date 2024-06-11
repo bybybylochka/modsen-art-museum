@@ -12,6 +12,8 @@ export const PaginationCardContainer = styled.div`
 
 export const PaginationCardImage = styled.img`
     width: 424px;
+    height: 444px;
+    object-fit: cover;
 `;
 
 export const PaginationCardInfo = styled.div`
@@ -28,8 +30,11 @@ export const PaginationCardInfo = styled.div`
 export const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: 10px;
     & p {
         margin: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 `;

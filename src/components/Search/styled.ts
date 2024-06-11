@@ -12,14 +12,18 @@ export const SearchContainer = styled.div`
 
 export const SearchInput = styled.input`
     border-radius: 16px;
-    padding: 16px;
+    padding: 16px 50px 16px 16px;
     width: 50%;
 `;
 
-export const SearchImg = styled.img`
+export const SearchImg = styled.img``;
+
+export const SearchButton = styled.button`
     position: absolute;
     top: 8px;
-    right: 315px;
+    right: 305px;
+    border: none;
+    background-color: transparent;
 `;
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     appearance: none;
@@ -61,4 +65,10 @@ export const SortLabel = styled.label`
     color: ${globalColors.mainColor};
     font-size: 16px;
     font-weight: 600;
+`;
+
+export const ErrorMessage = styled.div`
+    color: ${globalColors.textErrorColor};
+    font-size: 14px;
+    margin-top: 4px;
 `;
