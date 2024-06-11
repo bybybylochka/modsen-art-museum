@@ -34,13 +34,19 @@ export const HighlightDate = styled.p`
     font-size: 15px;
     font-weight: 600;
 `;
-
-export const HighlightSaveButton = styled.button`
+interface HighlightSaveButtonProps {
+    saved?: boolean;
+}
+export const HighlightSaveButton = styled.button<HighlightSaveButtonProps>`
     border: none;
     border-radius: 50%;
     padding: 17px;
     height: 60px;
-    background-color: ${globalColors.backgroundColor};
+    background-color: ${({ saved }) =>
+        saved
+            ? `${globalColors.backgroundSavedColor}`
+            : `${globalColors.backgroundColor}`};
+    margin-left: auto;
     &:hover {
         background-color: ${globalColors.backgroundHeaderColor};
     }

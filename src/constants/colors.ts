@@ -2,6 +2,7 @@ export const globalColors = {
     backgroundColor: '#FAFAFA',
     backgroundHeaderColor: '#343333',
     backgroundCardColor: '#FFFFFF',
+    backgroundSavedColor: '#88420c',
     mainColor: '#F17900',
     textColor: '#393939',
     textDisabledColor: '#a4a4a4',

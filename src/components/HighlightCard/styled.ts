@@ -4,7 +4,6 @@ import { globalColors } from '@constants/colors';
 export const HighlightCardContainer = styled.div`
     background-color: ${globalColors.backgroundCardColor};
     display: flex;
-    justify-content: space-between;
     height: 130px;
     width: 416px;
     padding: 16px;
@@ -15,5 +14,5 @@ export const HighlightCardContainer = styled.div`
 export const HighlightCardImage = styled.img`
     width: 80px;
     height: 80px;
-    object-fit: contain;
+    object-fit: cover;
 `;
