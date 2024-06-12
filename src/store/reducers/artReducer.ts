@@ -69,7 +69,7 @@ export const loadRandomArts = (): AppThunk => async (dispatch) => {
         const arts = await api.loadRandomArts(page);
         dispatch(loadRandomArtsAction(arts.data));
     } catch (error) {
-        // обработка ошибки
+        throw error;
     }
 };
 
@@ -84,8 +84,8 @@ export const loadPaginationPage =
                     arts.pagination.total_pages,
                 ),
             );
-        } catch (err) {
-            // обработка ошибки
+        } catch (error) {
+            throw error;
         }
     };
 
@@ -95,7 +95,7 @@ export const loadDetailedInfo =
         try {
             const art = await api.loadDetailedInfo(id);
             dispatch(loadDetailedInfoAction(art.data));
-        } catch (err) {
-            // обработка ошибки
+        } catch (error) {
+            throw error;
         }
     };

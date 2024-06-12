@@ -7,20 +7,23 @@ import Favorites from '@pages/Favorites';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '@store/index';
+import ErrorBoundary from '@components/ErrorBoundary';
 
 function App() {
     return (
         <Provider store={store}>
             <Router>
                 <Header />
-                <Routes>
-                    <Route path={'/'} element={<MainPage />} />
-                    <Route
-                        path={'/detailed-info/:id'}
-                        element={<DetailedInfo />}
-                    />
-                    <Route path={'/favorites'} element={<Favorites />} />
-                </Routes>
+                <ErrorBoundary>
+                    <Routes>
+                        <Route path={'/'} element={<MainPage />} />
+                        <Route
+                            path={'/detailed-info/:id'}
+                            element={<DetailedInfo />}
+                        />
+                        <Route path={'/favorites'} element={<Favorites />} />
+                    </Routes>
+                </ErrorBoundary>
                 <Footer />
                 <GlobalStyles />
             </Router>
