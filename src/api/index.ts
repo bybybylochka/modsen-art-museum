@@ -6,6 +6,7 @@ const instanceArt = axios.create({
 
 export const api = {
     loadRandomArts(page: number) {
+        console.log('load random arts');
         return instanceArt
             .get(
                 `/artworks?page=${page}&limit=9&fields=id,title,artist_display,date_display,image_id`,

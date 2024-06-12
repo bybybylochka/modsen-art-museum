@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from '@store/index';
 import { loadPaginationPage } from '@store/reducers/artReducer';
 import Pagination from '@components/Pagination';
 import Search from '@components/Search';
+import Preloader from '@components/Preloader';
 
 const ROWS_PER_PAGE = 3;
 
@@ -19,10 +20,20 @@ const ForYou = () => {
     const [page, setPage] = useState(1);
     const [doSort, setDoSort] = useState(false);
     const [query, setQuery] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        dispatch(loadPaginationPage(page, doSort, query));
+        setLoading(true);
+        const fetchData = async () => {
+            try {
+                await dispatch(loadPaginationPage(page, doSort, query));
+            } catch (error) {
+                setLoading(false);
+                // обработка ошибки
+            }
+        };
+        fetchData().then(() => setLoading(false));
     }, [dispatch, page, doSort, query]);
 
     const handleNextPageClick = useCallback(() => {
@@ -56,16 +67,20 @@ const ForYou = () => {
             <ForYouContainer>
                 <Subtitle>Topics for you</Subtitle>
                 <Title>Our special gallery</Title>
-                <PaginationCardContainer>
-                    {arts
-                        ? arts.map((art, index) => (
-                              <PaginationCard
-                                  key={index}
-                                  art={art}
-                              ></PaginationCard>
-                          ))
-                        : 'no data'}
-                </PaginationCardContainer>
+                {loading ? (
+                    <Preloader />
+                ) : (
+                    <PaginationCardContainer>
+                        {arts
+                            ? arts.map((art, index) => (
+                                  <PaginationCard
+                                      key={index}
+                                      art={art}
+                                  ></PaginationCard>
+                              ))
+                            : 'no data'}
+                    </PaginationCardContainer>
+                )}
                 {arts && (
                     <Pagination
                         onNextPageClick={handleNextPageClick}
