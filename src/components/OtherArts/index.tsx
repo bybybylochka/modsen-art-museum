@@ -24,7 +24,6 @@ const OtherArts = () => {
         };
         fetchData().then(() => setLoading(false));
     }, [dispatch]);
-
     return (
         <OtherArtsContainer>
             <Subtitle>Here some more</Subtitle>
