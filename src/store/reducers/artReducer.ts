@@ -18,6 +18,7 @@ export type ArtState = {
     paginationArts: Art[];
     totalPages: number;
     detailedInfo: DetailedArt;
+    isLoading: boolean;
 };
 
 const initialState: ArtState = {
@@ -36,6 +37,7 @@ const initialState: ArtState = {
         credit_line: '',
         gallery_title: '',
     },
+    isLoading: false,
 };
 
 export default function artReducer(
