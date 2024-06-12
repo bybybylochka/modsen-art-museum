@@ -56,6 +56,7 @@ const ForYou = () => {
     }, []);
 
     const handleSubmit = (query: string, doSort: boolean) => {
+        console.log('submit');
         setPage(1);
         setDoSort(doSort);
         setQuery(query);
