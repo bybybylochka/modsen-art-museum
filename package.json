@@ -2,7 +2,7 @@
   "name": "museum",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bybybylochka.github.io/modsen-art-museum",
+  "homepage": "https://bybybylochka.github.io",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@reduxjs/toolkit": "^2.2.5",
