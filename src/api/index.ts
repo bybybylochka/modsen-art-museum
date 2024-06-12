@@ -12,7 +12,12 @@ export const api = {
                 `/artworks?page=${page}&limit=9&fields=id,title,artist_display,date_display,image_id`,
             )
             .then((response) => response.data)
-            .catch(() => console.log('Ошибка загрузки art'));
+            .catch((error) => {
+                console.error('Error loading random arts:', error);
+                throw new Error(
+                    'An error occurred while uploading other works of art. Please try again later.',
+                );
+            });
     },
     loadPaginationArts(page: number, doSort: boolean, query: string) {
         let doSortRequest = doSort ? '&sort=date_end' : '';
@@ -22,7 +27,12 @@ export const api = {
                     doSortRequest,
             )
             .then((response) => response.data)
-            .catch(() => console.log('Ошибка загрузки пагинации art'));
+            .catch((error) => {
+                console.error('Error loading arts:', error);
+                throw new Error(
+                    'An error occurred while uploading works of art for you. Please try again later.',
+                );
+            });
     },
     loadDetailedInfo(id?: string) {
         return instanceArt
@@ -30,6 +40,11 @@ export const api = {
                 `/artworks/${id}?fields=id,title,artist_display,date_display,image_id,place_of_origin,dimensions,credit_line,gallery_title`,
             )
             .then((response) => response.data)
-            .catch(() => console.log('Ошибка загрузки детальной информации'));
+            .catch((error) => {
+                console.error('Error loading detailed info about arts:', error);
+                throw new Error(
+                    'An error occurred while uploading detailed info art. Please try again later.',
+                );
+            });
     },
 };

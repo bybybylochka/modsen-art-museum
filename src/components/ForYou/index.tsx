@@ -8,6 +8,8 @@ import { loadPaginationPage } from '@store/reducers/artReducer';
 import Pagination from '@components/Pagination';
 import Search from '@components/Search';
 import Preloader from '@components/Preloader';
+import { UNEXPECTED_ERROR_MESSAGE } from '@constants/messages';
+import ErrorInfo from '@components/Error';
 
 const ROWS_PER_PAGE = 3;
 
@@ -15,6 +17,7 @@ const getTotalPageCount = (rowCount: number): number =>
     Math.ceil(rowCount / ROWS_PER_PAGE);
 
 const ForYou = () => {
+    const [errorMessage, setErrorMessage] = useState('');
     const arts = useSelector((state: RootState) => state.art.paginationArts);
     const totalPages = useSelector((state: RootState) => state.art.totalPages);
     const [page, setPage] = useState(1);
@@ -30,7 +33,16 @@ const ForYou = () => {
                 await dispatch(loadPaginationPage(page, doSort, query));
             } catch (error) {
                 setLoading(false);
-                // обработка ошибки
+                if (error instanceof Error) {
+                    console.error(
+                        'Error fetching arts for you:',
+                        error.message,
+                    );
+                    setErrorMessage(error.message);
+                } else {
+                    console.error('Unexpected error occurred:', error);
+                    setErrorMessage(UNEXPECTED_ERROR_MESSAGE);
+                }
             }
         };
         fetchData().then(() => setLoading(false));
@@ -68,7 +80,9 @@ const ForYou = () => {
             <ForYouContainer>
                 <Subtitle>Topics for you</Subtitle>
                 <Title>Our special gallery</Title>
-                {loading ? (
+                {errorMessage ? (
+                    <ErrorInfo info={errorMessage} />
+                ) : loading ? (
                     <Preloader />
                 ) : (
                     <PaginationCardContainer>

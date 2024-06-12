@@ -26,8 +26,11 @@ import { loadDetailedInfo } from '@store/reducers/artReducer';
 import useImageLoader from '@utils/useImageLoader';
 import defaultImage from '@assets/logo.png';
 import Preloader from '@components/Preloader';
+import ErrorInfo from '@components/Error';
+import { UNEXPECTED_ERROR_MESSAGE } from '@constants/messages';
 
 const DetailedCard = () => {
+    const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
     const art = useSelector((state: RootState) => state.art.detailedInfo);
     const src = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
@@ -42,7 +45,16 @@ const DetailedCard = () => {
                 await dispatch(loadDetailedInfo(id));
             } catch (error) {
                 setLoading(false);
-                // обработка ошибки
+                if (error instanceof Error) {
+                    console.error(
+                        'Error fetching arts for you:',
+                        error.message,
+                    );
+                    setErrorMessage(error.message);
+                } else {
+                    console.error('Unexpected error occurred:', error);
+                    setErrorMessage(UNEXPECTED_ERROR_MESSAGE);
+                }
             }
         };
         fetchData().then(() => setLoading(false));
@@ -50,7 +62,9 @@ const DetailedCard = () => {
     return (
         <DetailedCardContainer>
             <Wrapper>
-                {loading ? (
+                {errorMessage ? (
+                    <ErrorInfo info={errorMessage} />
+                ) : loading ? (
                     <Preloader />
                 ) : (
                     <DetailedCardWrapper>
