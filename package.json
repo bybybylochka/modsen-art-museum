@@ -1,8 +1,7 @@
 {
   "name": "museum",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://bybybylochka.github.io/modsen-art-museum",
+  "homepage": "https://bybybylochka.github.io/",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@reduxjs/toolkit": "^2.2.5",
@@ -36,7 +35,7 @@
     "eject": "craco eject",
     "prepare": "husky",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": [
